@@ -33,7 +33,7 @@ class Program
         HideWords word = new HideWords(guessText);
         c=0;
         do
-        {Console.WriteLine(word.GetHiddenCount() + " of " + word.GetLength());
+        {
             Console.Clear();
             Console.WriteLine(guessRef + " " + word.GetWords());
             Console.WriteLine();
