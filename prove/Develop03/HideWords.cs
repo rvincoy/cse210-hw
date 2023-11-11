@@ -54,21 +54,15 @@ public class HideWords
 
             if (num>=3)
             {
-                for (int i=0; i<word.Length(); i++)
-                {
-                    temp=temp+"_";
-                }
-               word.SetHidden(1);
-               word.SetText(temp);
+                temp = Dashes(word.GetText());
+                word.SetHidden(1);
+                word.SetText(temp);
             }
             else if (GetHiddenCount()>=23)
             {
-                for (int i=0; i<word.Length(); i++)
-                {
-                    temp=temp+"_";
-                }
-               word.SetHidden(1);
-               word.SetText(temp);
+                temp = Dashes(word.GetText());
+                word.SetHidden(1);
+                word.SetText(temp);
             }
         }
     }
