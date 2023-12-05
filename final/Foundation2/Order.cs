@@ -36,9 +36,13 @@ public class Order
     {
         _products[index]=product;
     }
-    public float TotalCost()
+    public void AddProduct(Product product)
     {
-        float tc=0;
+        _products.Add(product);
+    }
+    public double TotalCost()
+    {
+        double tc=0;
         foreach (Product product in _products)
         {
             tc=tc+product.TotalPrice();
@@ -47,7 +51,8 @@ public class Order
     }
     public string PackingLabel()
     {
-        return _customer.GetAddressPackingLabel();
+        string packingLabel="USPS Priority Mail\n\n\nUniversal Exporters\n14 Pine Street\nOrlando, FL 32050 USA\n\n\n" + _customer.GetAddressPackingLabel();
+        return packingLabel;
     }
     public float ShippingCost()
     {
