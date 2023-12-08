@@ -39,6 +39,10 @@ public class Event
     {
         return _address;
     }
+    public void SetAddress(Address address)
+    {
+        _address=address;
+    }
     public void SetEventTitle(string eventTitle)
     {
         _eventTitle=eventTitle;
@@ -61,13 +65,23 @@ public class Event
     }
     public string StandardDetails()
     {
-        return "";
+        string a;
+        a="Title : " + _eventTitle + "\n";
+        a=a+ "Description : " + _description + "\n";
+        a=a+ "Date : " + _date + "\n";
+        a=a+ "Time : " + _time + "\n";
+        a=a+ "Address :\n" + _address.GetAddressFormatted();
+        return a;
     }
-    public string FullDetails()
+    public virtual string FullDetails()
     {
         return "";
     }
-    public string ShortDescription()
+    public virtual string ShortDescription()
+    {
+        return "";
+    }
+    public virtual string SaveFile()
     {
         return "";
     }
