@@ -5,7 +5,7 @@ public class Cycling : Activity
     {
         _speed=0;
     }
-    public Cycling(string date, int length, double speed) : base(date,length)
+    public Cycling(string date, int duration, double speed) : base(date,duration)
     {
         _speed=speed;
     }
@@ -17,20 +17,22 @@ public class Cycling : Activity
     {
         _speed=speed;
     }
-    public override float ComputeDistance()
+    public override double ComputeDistance()
     {
-        return 0;
+        return ComputeSpeed()*30/60;
     }
-    public override float ComputeSpeed()
+    public override double ComputeSpeed()
     {
-        return 0;
+        return _speed;
     }
-    public override float ComputePace()
+    public override double ComputePace()
     {
-        return 0;
+        return base.GetDuration()/ComputeDistance();
     }
     public override string Summary()
     {
-        return "";
+        string a = base.GetDate() + " Cycling (" + base.GetDuration() + " min): Distance: " + ComputeDistance() + " km, ";
+        a = a + "Speed: " + ComputeSpeed() + " kph, Pace: " + ComputePace() + " min per km";
+        return a;
     }   
 }

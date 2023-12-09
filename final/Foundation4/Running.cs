@@ -5,7 +5,7 @@ public class Running : Activity
     {
         _distance=0;
     }
-    public Running(string date, int length, double distance) : base(date,length)
+    public Running(string date, int duration, double distance) : base(date,duration)
     {
         _distance=distance;
     }
@@ -17,20 +17,22 @@ public class Running : Activity
     {
         _distance=distance;
     }
-    public override float ComputeDistance()
+    public override double ComputeDistance()
     {
-        return 0;
+        return _distance;
     }
-    public override float ComputeSpeed()
+    public override double ComputeSpeed()
     {
-        return 0;
+        return ComputeDistance()/base.GetDuration()*60;
     }
-    public override float ComputePace()
+    public override double ComputePace()
     {
-        return 0;
+        return base.GetDuration()/ComputeDistance();
     }
     public override string Summary()
     {
-        return "";
+        string a = base.GetDate() + " Running (" + base.GetDuration() + " min): Distance: " + ComputeDistance() + " km, ";
+        a = a + "Speed: " + ComputeSpeed() + " kph, Pace: " + ComputePace() + " min per km";
+        return a;
     }   
 }

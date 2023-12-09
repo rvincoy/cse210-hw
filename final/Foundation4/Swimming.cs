@@ -5,7 +5,7 @@ public class Swimming : Activity
     {
         _laps=0;
     }
-    public Swimming(string date, int length, double laps) : base(date,length)
+    public Swimming(string date, int duration, double laps) : base(date,duration)
     {
         _laps=laps;
     }
@@ -17,20 +17,22 @@ public class Swimming : Activity
     {
         _laps=laps;
     }
-    public override float ComputeDistance()
+    public override double ComputeDistance()
     {
-        return 0;
+        return _laps * 50 / 1000;
     }
-    public override float ComputeSpeed()
+    public override double ComputeSpeed()
     {
-        return 0;
+        return ComputeDistance()/base.GetDuration()*60;
     }
-    public override float ComputePace()
+    public override double ComputePace()
     {
-        return 0;
+        return base.GetDuration()/ComputeDistance();
     }
     public override string Summary()
     {
-        return "";
+        string a = base.GetDate() + " Swimming (" + base.GetDuration() + " min): Distance: " + ComputeDistance() + " km, ";
+        a = a + "Speed: " + ComputeSpeed() + " kph, Pace: " + ComputePace() + " min per km";
+        return a;
     }   
 }

@@ -1,27 +1,31 @@
 public abstract class Activity
 {
     private string _date;
-    private int _length;
+    private int _duration;
     public Activity()
     {
         _date="";
-        _length=0;
+        _duration=0;
     }
-    public Activity(string date, int length)
+    public Activity(string date, int duration)
     {
         _date=date;
-        _length=length;
+        _duration=duration;
     }
     public string GetDate()
     {
         return _date;
     }
-    public int GetLength()
+    public int GetDuration()
     {
-        return _length;
+        return _duration;
     }
-    public abstract float ComputeDistance();
-    public abstract float ComputeSpeed();
-    public abstract float ComputePace();
+    public double GetDurationHrs()
+    {
+        return _duration/60;
+    }
+    public abstract double ComputeDistance();
+    public abstract double ComputeSpeed();
+    public abstract double ComputePace();
     public abstract string Summary();
 }
